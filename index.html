@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A private, local PTO calendar. See where your time off fits.">
+  <title>Days off — PTO planner</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="storage-warning" class="notice" role="alert" hidden></div>
+  <main>
+    <header class="app-header"><a class="brand" href="./" aria-label="Days off home"><span class="brand-mark" aria-hidden="true">▦</span> Days off</a><div class="header-actions"><button id="theme" class="quiet" aria-label="Switch color theme">◐</button><button id="settings" class="quiet" hidden>Settings</button><button id="restart" class="quiet" hidden>Start over</button></div></header>
+    <section id="setup" class="setup-wrap">
+      <form id="setup-form" class="setup-card">
+        <p id="setup-eyebrow" class="eyebrow">MAKE ROOM FOR TIME OFF</p>
+        <h1 id="setup-title">A little setup.<br>A year of possibilities.</h1>
+        <p id="setup-intro" class="muted intro">Start with your balance. Plan from there.</p>
+        <div class="field-pair"><label>Starting PTO balance<span class="input-unit"><input name="balance" type="number" min="0" max="1000000" step="0.01" value="43.42" required><span>hours</span></span></label><label>Balance as of<input name="start" type="date" required></label></div>
+        <hr><div class="section-title"><strong>Your accrual</strong><span class="tag">Every 2 weeks</span></div>
+        <div class="field-pair"><label>Annual PTO<span class="input-unit"><input name="annual" type="number" min="0" max="1000000" step="any" value="18" required><span>days</span></span></label><label>Next accrual date<input name="next" type="date" required></label></div>
+        <p id="rate-summary" class="rate-summary">≈ 5.54 hours added every 2 weeks</p>
+        <details id="exact-details"><summary>Use exact hours from payroll</summary><label class="exact-field">Hours per deposit<input name="exact" type="number" min="0" max="1000000" step="any" placeholder="5.5384615"></label></details>
+        <div class="workweek"><span>Workweek</span><span class="week-chips" aria-label="Monday through Friday"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span class="off">S</span><span class="off">S</span></span><span>8h / day</span></div>
+        <div id="setup-error" class="error" role="alert"></div>
+        <button id="setup-submit" class="primary full" type="submit">Start planning <span aria-hidden="true">→</span></button><button id="cancel-settings" class="quiet full" type="button" hidden>Back to calendar</button>
+        <p class="saved-note">Saved in this browser</p>
+      </form>
+    </section>
+    <section id="planner" hidden>
+      <div class="planner-top"><div><p class="eyebrow">YOUR TIME, WELL SPENT</p><div class="period-nav"><button id="previous" class="icon-button" aria-label="Previous year">‹</button><h1 id="period"></h1><button id="next" class="icon-button" aria-label="Next year">›</button></div></div><div class="planner-actions"><div class="view-switch" aria-label="Calendar view"><button id="year-view" aria-pressed="true">Year</button><button id="month-view" aria-pressed="false">Month</button></div><button id="add-pto" class="primary">+ Add PTO</button></div></div>
+      <div class="summary-line"><span id="plan-summary"></span><div class="legend"><span><i class="swatch pto"></i>PTO</span><span><i class="swatch short"></i>Shortfall</span><span><i class="swatch holiday"></i>Holiday</span><span><i class="accrual-dot"></i>Accrual</span></div></div>
+      <div id="calendar" aria-label="PTO calendar"></div>
+      <div class="planner-footer"><span id="plan-status" aria-live="polite"></span><span class="muted hint">Drag to plan · Right-click for holidays</span><div class="backup-actions"><button id="export" class="quiet">Export</button><button id="import" class="quiet">Import</button><input id="import-file" type="file" accept="application/json,.json" hidden></div></div>
+      <p id="backup-status" class="muted" aria-live="polite"></p>
+    </section>
+  </main>
+  <dialog id="pto-dialog" aria-labelledby="pto-title"><form id="pto-form"><div class="dialog-header"><h2 id="pto-title">Plan time off</h2><button type="button" class="icon-button close-dialog" aria-label="Close PTO editor">×</button></div><div class="field-pair"><label>From<input id="pto-from" type="date" required></label><label>Through<input id="pto-through" type="date" required></label></div><label class="hours-field">PTO per workday<span class="input-unit"><input id="pto-hours" type="number" min="0.01" max="24" step="0.01" value="8" required><span>hours</span></span></label><div class="selection-summary"><strong id="selection-total"></strong><span id="selection-result" aria-live="polite"></span></div><div id="pto-error" class="error" role="alert"></div><button id="dialog-holiday" type="button" class="quiet holiday-action">Mark company holiday</button><div class="dialog-actions"><button id="remove-pto" type="button" class="quiet">Remove PTO</button><button class="primary" id="save-pto" type="submit">Save PTO</button></div></form></dialog>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><div class="dialog-header"><h2 id="restart-title">Start a fresh plan?</h2></div><p>Clear all planned PTO and company holidays?</p><p class="muted">Your balance and accrual settings will stay prefilled.</p><div class="dialog-actions"><button id="keep-plan">Keep planning</button><button id="confirm-restart" class="primary">Start over</button></div></dialog>
+  <dialog id="import-dialog" aria-labelledby="import-title"><h2 id="import-title">Replace this plan?</h2><p>The imported backup will replace your current plan and settings.</p><div class="dialog-actions"><button id="cancel-import">Keep current plan</button><button id="confirm-import" class="primary">Import backup</button></div></dialog>
+  <div id="context-menu" class="context-menu" role="menu" aria-label="Day actions" hidden><div id="context-date" class="context-date"></div><button id="context-pto" role="menuitem">Plan PTO</button><button id="context-holiday" role="menuitem">Mark company holiday</button></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
