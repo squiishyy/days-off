@@ -9,6 +9,7 @@ const allowed = new Set(['index.html', 'app.js', 'model.js', 'styles.css']);
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css' };
 const server = http.createServer(async (req, res) => {
   const name = new URL(req.url, 'http://localhost').pathname.slice(1) || 'index.html';
+  if (name === 'health') { res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify({ app: 'days-off', version: 1 })); return; }
   if (!allowed.has(name)) { res.writeHead(404); res.end('Not found'); return; }
   try {
     const data = await readFile(path.join(root, name));

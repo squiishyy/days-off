@@ -1,8 +1,12 @@
 # Days off
 
-A small, local PTO planning calendar. No account, backend, or runtime dependencies.
+A small, local PTO planning calendar. No account, cloud backend, or npm dependencies.
 
-## Run locally
+## Install on a Mac
+
+Double-click **Install Days Off.command**. It downloads a private Node.js runtime, installs a Days Off app shortcut, and starts a local server that comes back at login after a restart. You do not need GitHub access or an administrator password. See [Mac installation instructions](MAC-INSTALL.md) for details, updates, and uninstalling.
+
+## Run without installing
 
 On this Mac, double-click **Start Days Off.command**. It starts the server and opens your default browser. Keep the Terminal window open while using the planner.
 
@@ -31,7 +35,7 @@ The starting balance is the balance **before any events on the effective date**.
 
 Accrual is available before PTO on the same date. There are no caps, expiration, rollover limits, or annual resets. Dates are handled as calendar dates without timezone conversion. Calculations use microhours, then display rounded to two decimals. PTO is assigned per date; saving an overlapping range replaces the selected days' hours rather than double-counting them.
 
-Data stays in this browser's localStorage. Clearing browser data removes it; use Export for backups. Code in GitHub does not contain entered PTO data. A normal browser refresh retains the plan. Private browsing storage lasts only for the private session.
+Data stays in this browser's localStorage. Clearing browser data removes it; use Export for backups. Code in GitHub does not contain entered PTO data. A normal browser refresh, browser quit, server restart, or Mac restart retains the plan in the same browser profile at the same address. Private browsing storage lasts only for the private session.
 
 ## Checks
 
