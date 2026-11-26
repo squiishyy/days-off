@@ -20,7 +20,7 @@ const uid = process.getuid();
 const service = `gui/${uid}/com.squiishyy.daysoff`;
 const xml = text => String(text).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const shellQuote = text => "'"+text.replaceAll("'", "'\\''")+"'";
-const files = ['index.html','styles.css','app.js','tour.js','model.js','server.mjs','package.json','README.md','MAC-INSTALL.md'];
+const files = ['index.html','styles.css','app.js','tour.js','model.js','server.mjs','package.json','README.md','MAC-INSTALL.md','favicon.svg','favicon.ico','icon-192.png','icon-512.png','apple-touch-icon.png'];
 const run = (command,args) => execFileSync(command,args,{encoding:'utf8',stdio:['ignore','pipe','pipe']});
 const exists = async file => { try { await access(file); return true; } catch { return false; } };
 const isUpdate = await exists(path.join(appDir,'index.html'));
@@ -54,6 +54,8 @@ try {
   await mkdir(path.join(support,'logs'),{recursive:true});
   await mkdir(path.dirname(agent),{recursive:true});
   await mkdir(path.join(bundle,'Contents','MacOS'),{recursive:true});
+  await mkdir(path.join(bundle,'Contents','Resources'),{recursive:true});
+  await copyFile(path.join(source,'mac','DaysOff.icns'),path.join(bundle,'Contents','Resources','DaysOff.icns'));
   await copyFile(path.join(source,'mac','launch.mjs'),path.join(support,'launch.mjs'));
   await copyFile(path.join(source,'mac','uninstall.sh'),path.join(support,'Uninstall Days Off.command'));
   await writeFile(path.join(bundle,'Contents','Info.plist'),`<?xml version="1.0" encoding="UTF-8"?>
@@ -64,6 +66,7 @@ try {
 <key>CFBundleIdentifier</key><string>com.squiishyy.daysoff</string>
 <key>CFBundleExecutable</key><string>DaysOff</string>
 <key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleIconFile</key><string>DaysOff</string>
 <key>CFBundleVersion</key><string>${xml(release)}</string>
 <key>CFBundleShortVersionString</key><string>${xml(release)}</string>
 <key>LSUIElement</key><true/>

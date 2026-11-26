@@ -4,13 +4,16 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <meta name="description" content="A private, local PTO calendar. See where your time off fits.">
+  <link rel="icon" href="favicon.svg?v=1.1.1" type="image/svg+xml">
+  <link rel="alternate icon" href="favicon.ico?v=1.1.1" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>Days off — PTO planner</title><link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="update-notice" class="notice update-notice" role="status" hidden><span>A new version is ready. Reload when you’re finished editing.</span><button id="reload-update" type="button">Reload app</button></div>
   <div id="storage-warning" class="notice" role="alert" hidden></div>
   <main>
-    <header class="app-header"><a class="brand" href="./" aria-label="Days off home"><span class="brand-mark" aria-hidden="true">▦</span> Days off</a><div class="header-actions"><button id="theme" class="quiet" aria-label="Switch color theme">◐</button><button id="help" class="quiet">How to use</button><button id="settings" class="quiet" hidden>Settings</button><button id="restart" class="quiet" hidden>Start over</button></div></header>
+    <header class="app-header"><a class="brand" href="./" aria-label="Days off home"><img class="brand-mark" src="favicon.svg" width="28" height="28" alt=""> Days off</a><div class="header-actions"><button id="theme" class="quiet" aria-label="Switch color theme">◐</button><button id="help" class="quiet">How to use</button><button id="settings" class="quiet" hidden>Settings</button><button id="restart" class="quiet" hidden>Start over</button></div></header>
     <section id="setup" class="setup-wrap">
       <form id="setup-form" class="setup-card">
         <p id="setup-eyebrow" class="eyebrow">MAKE ROOM FOR TIME OFF</p>
@@ -31,7 +34,7 @@
       <div class="planner-top"><div><p class="eyebrow">YOUR TIME, WELL SPENT</p><div class="period-nav"><h1 id="period">Your calendar</h1></div></div><div class="planner-actions"><button id="today-button" type="button" title="Snap back to today">Today</button><div class="view-switch" aria-label="Calendar view"><button id="year-view" aria-pressed="true">Year</button><button id="month-view" aria-pressed="false">Month</button></div><button id="add-pto" class="primary">+ Add event</button></div></div>
       <div class="summary-line"><span id="plan-summary"></span><div class="legend"><span><i class="swatch pto"></i>PTO</span><span><i class="swatch plan"></i>Plans only</span><span><i class="swatch short"></i>Shortfall</span><span><i class="swatch holiday"></i>Holiday</span><span><i class="accrual-dot"></i>Accrual</span></div></div>
       <div id="calendar" aria-label="PTO calendar"></div>
-      <div class="planner-footer"><span id="plan-status" aria-live="polite"></span><span class="muted hint">Drag to add an event · Right-click for holidays</span><div class="backup-actions"><span class="app-version">v1.1.0</span><button id="export" class="quiet">Export</button><button id="import" class="quiet">Import</button><input id="import-file" type="file" accept="application/json,.json" hidden></div></div>
+      <div class="planner-footer"><span id="plan-status" aria-live="polite"></span><span class="muted hint">Drag to add an event · Right-click for holidays</span><div class="backup-actions"><span class="app-version">v1.1.1</span><button id="export" class="quiet">Export</button><button id="import" class="quiet">Import</button><input id="import-file" type="file" accept="application/json,.json" hidden></div></div>
       <p id="backup-status" class="muted" aria-live="polite"></p>
     </section>
   </main>

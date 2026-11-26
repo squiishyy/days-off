@@ -27,7 +27,7 @@ Send the newer **Days-Off-Mac.zip**, unzip it, and double-click **Install or Upd
 
 The updater checks the new code, keeps a previous-code copy for rollback, replaces the installed app, and restarts its login service at **the same localhost address and port**. It never clears browser storage. Updates do not open a different browser or profile.
 
-For this first update from the original version, return to the existing calendar tab and press **Command-R** once if needed. Confirm **v1.1.0** at the bottom. Version 1.1 and later can detect later updates and refresh an idle calendar in the same tab; an unsaved editor is protected until you finish editing or choose Reload app.
+For this first update from the original version, return to the existing calendar tab and press **Command-R** once if needed. Confirm **v1.1.1** at the bottom. Version 1.1 and later can detect later updates and refresh an idle calendar in the same tab; an unsaved editor is protected until you finish editing or choose Reload app.
 
 macOS may ask you to approve a newly downloaded installer through Privacy & Security > Open Anyway. This app remains unsigned; the updater does not disable Apple security protections. The installer does not silently download future app updates.
 

@@ -6,7 +6,7 @@ Already installed? Run the same file. It updates the app, restarts its local
 server, and keeps your existing browser-saved plan. No uninstall is needed.
 
 After this update, return to your existing calendar tab and press Command-R
-if it still shows the old version. Look for v1.1.0 at the bottom.
+if it still shows the old version. Look for v1.1.1 at the bottom.
 Future updates can refresh an idle calendar automatically; an unsaved editor
 will ask you to finish before reloading.
 

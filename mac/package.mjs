@@ -8,7 +8,7 @@ const source=fileURLToPath(new URL('..',import.meta.url));
 const output=path.resolve(get('--output')),stageParent=path.resolve(get('--stage'));
 await mkdir(stageParent,{recursive:true});await mkdir(path.dirname(output),{recursive:true});
 const stage=await mkdtemp(path.join(stageParent,'days-off-package-')),folder=path.join(stage,'Days Off');
-const files=['index.html','styles.css','app.js','tour.js','model.js','server.mjs','model.test.mjs','package.json','README.md','MAC-INSTALL.md','START-HERE.txt','Install or Update Days Off.command','mac/install.sh','mac/install.mjs','mac/launch.mjs','mac/uninstall.sh'];
+const files=['index.html','styles.css','app.js','tour.js','model.js','server.mjs','model.test.mjs','package.json','README.md','MAC-INSTALL.md','START-HERE.txt','Install or Update Days Off.command','mac/install.sh','mac/install.mjs','mac/launch.mjs','mac/uninstall.sh','mac/DaysOff.icns','favicon.svg','favicon.ico','icon-192.png','icon-512.png','apple-touch-icon.png'];
 try{
   for(const name of files){const target=path.join(folder,name);await mkdir(path.dirname(target),{recursive:true});await copyFile(path.join(source,name),target);}
   const archive=path.join(stage,'Days-Off-Mac.zip');

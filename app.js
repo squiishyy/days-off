@@ -4,7 +4,7 @@ const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 const STORAGE_KEY = 'days-off.plan.v1';
 const THEME_KEY = 'days-off.theme';
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.1.1';
 let editingPlanEvent = null, originalPtoRange = null;
 let labelMixed = false, colorMixed = false, labelEdited = false, colorEdited = false;
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
