@@ -5,6 +5,7 @@
 1. Unzip **Days-Off-Mac.zip**.
 2. Double-click **Install Days Off.command** inside the Days Off folder.
 3. When it finishes, **Days Off** is in your personal Applications folder (`~/Applications`). Open it whenever you want the calendar. The installer opens it once for you.
+4. Enter your balance and accrual dates. A short illustrated guide then shows how to use the calendar. Skip it anytime, or replay it with **How to use**.
 
 No GitHub login, Homebrew, administrator password, or existing Node installation is required. The first installation needs internet access to download a private copy of the official Node.js runtime. The planner then works offline. Supports Apple silicon and Intel Macs running macOS 13.5 or newer.
 

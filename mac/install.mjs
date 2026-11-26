@@ -17,7 +17,7 @@ const uid = process.getuid();
 const service = `gui/${uid}/com.squiishyy.daysoff`;
 const xml = text => String(text).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const shellQuote = text => "'"+text.replaceAll("'", "'\\''")+"'";
-const files = ['index.html','styles.css','app.js','model.js','server.mjs','package.json','README.md','MAC-INSTALL.md'];
+const files = ['index.html','styles.css','app.js','tour.js','model.js','server.mjs','package.json','README.md','MAC-INSTALL.md'];
 const run = (command,args) => execFileSync(command,args,{encoding:'utf8',stdio:['ignore','pipe','pipe']});
 async function endpoint() {
   try { const response = await fetch('http://localhost:4173/health',{signal:AbortSignal.timeout(700)}); return response.ok && (await response.json()).app === 'days-off'; }

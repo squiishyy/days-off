@@ -18,6 +18,10 @@ npm start
 
 Open http://localhost:4173 in Chrome. Keep using this address: browser storage is tied to the address and port. Stop the server with Control-C. The planner works offline once the files are on your computer.
 
+## First-time guide
+
+After setup, a short illustrated walkthrough explains calendar navigation, drag selection, balance colors, company holidays, editing/removing PTO, and saved data. It appears once per browser profile. Complete it, skip it, or press Escape to dismiss it. **How to use** in the header replays it anytime. The guide uses examples only and never changes your plan. Starting over does not reset the guide preference.
+
 ## Plan time off
 
 - Setup: balance and effective date, annual PTO in 8-hour days, and next biweekly accrual date. Annual PTO / 26 estimates each deposit; enter the exact payroll amount when available.

@@ -9,7 +9,7 @@
 <body>
   <div id="storage-warning" class="notice" role="alert" hidden></div>
   <main>
-    <header class="app-header"><a class="brand" href="./" aria-label="Days off home"><span class="brand-mark" aria-hidden="true">▦</span> Days off</a><div class="header-actions"><button id="theme" class="quiet" aria-label="Switch color theme">◐</button><button id="settings" class="quiet" hidden>Settings</button><button id="restart" class="quiet" hidden>Start over</button></div></header>
+    <header class="app-header"><a class="brand" href="./" aria-label="Days off home"><span class="brand-mark" aria-hidden="true">▦</span> Days off</a><div class="header-actions"><button id="theme" class="quiet" aria-label="Switch color theme">◐</button><button id="help" class="quiet">How to use</button><button id="settings" class="quiet" hidden>Settings</button><button id="restart" class="quiet" hidden>Start over</button></div></header>
     <section id="setup" class="setup-wrap">
       <form id="setup-form" class="setup-card">
         <p id="setup-eyebrow" class="eyebrow">MAKE ROOM FOR TIME OFF</p>
@@ -37,6 +37,12 @@
   <dialog id="pto-dialog" aria-labelledby="pto-title"><form id="pto-form"><div class="dialog-header"><h2 id="pto-title">Plan time off</h2><button type="button" class="icon-button close-dialog" aria-label="Close PTO editor">×</button></div><div class="field-pair"><label>From<input id="pto-from" type="date" required></label><label>Through<input id="pto-through" type="date" required></label></div><label class="hours-field">PTO per workday<span class="input-unit"><input id="pto-hours" type="number" min="0.01" max="24" step="0.01" value="8" required><span>hours</span></span></label><div class="selection-summary"><strong id="selection-total"></strong><span id="selection-result" aria-live="polite"></span></div><div id="pto-error" class="error" role="alert"></div><button id="dialog-holiday" type="button" class="quiet holiday-action">Mark company holiday</button><div class="dialog-actions"><button id="remove-pto" type="button" class="quiet">Remove PTO</button><button class="primary" id="save-pto" type="submit">Save PTO</button></div></form></dialog>
   <dialog id="restart-dialog" aria-labelledby="restart-title"><div class="dialog-header"><h2 id="restart-title">Start a fresh plan?</h2></div><p>Clear all planned PTO and company holidays?</p><p class="muted">Your balance and accrual settings will stay prefilled.</p><div class="dialog-actions"><button id="keep-plan">Keep planning</button><button id="confirm-restart" class="primary">Start over</button></div></dialog>
   <dialog id="import-dialog" aria-labelledby="import-title"><h2 id="import-title">Replace this plan?</h2><p>The imported backup will replace your current plan and settings.</p><div class="dialog-actions"><button id="cancel-import">Keep current plan</button><button id="confirm-import" class="primary">Import backup</button></div></dialog>
+  <dialog id="walkthrough" class="walkthrough" aria-labelledby="tour-title" aria-describedby="tour-text">
+    <div class="tour-top"><span id="tour-step" class="eyebrow">Step 1 of 6</span><button id="tour-skip" class="quiet" type="button">Skip tour</button></div>
+    <div id="tour-visual" class="tour-visual" aria-hidden="true"></div>
+    <div class="tour-copy" aria-live="polite" aria-atomic="true"><h2 id="tour-title"></h2><p id="tour-text"></p><p id="tour-note" class="muted"></p></div>
+    <div class="tour-bottom"><button id="tour-back" type="button">Back</button><div id="tour-dots" aria-hidden="true"></div><button id="tour-next" class="primary" type="button">Next</button></div>
+  </dialog>
   <div id="context-menu" class="context-menu" role="menu" aria-label="Day actions" hidden><div id="context-date" class="context-date"></div><button id="context-pto" role="menuitem">Plan PTO</button><button id="context-holiday" role="menuitem">Mark company holiday</button></div>
   <div id="toast" class="toast" role="status" hidden></div>
   <script type="module" src="app.js"></script>

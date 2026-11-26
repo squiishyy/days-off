@@ -1,3 +1,4 @@
+import { createWalkthrough } from './tour.js';
 import { validDate, ordinal, isWeekday, datesBetween, eligibleDates, balanceAt, hours, isAccrual, shortfalls, withRange, validatePlan } from './model.js';
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -12,6 +13,8 @@ let plan = null, draftConfig = null, pendingImport = null, setupMode = 'first';
 let view = 'year', shownYear = Number(today.slice(0,4)), shownMonth = Number(today.slice(5,7))-1;
 let contextDate = null, drag = null, toastTimer;
 const setupForm = $('#setup-form');
+const walkthrough = createWalkthrough();
+$('#help').onclick = () => { hideContext(); walkthrough.show({force:true}); };
 try {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) {
@@ -73,7 +76,7 @@ setupForm.addEventListener('submit', event => {
   shownYear = Number(config.start.slice(0,4)); shownMonth = Number(config.start.slice(5,7))-1;
   save(); showPlanner();
 });
-function showPlanner() { $('#setup').hidden = true; $('#planner').hidden = false; $('#settings').hidden = false; $('#restart').hidden = false; render(); }
+function showPlanner() { $('#setup').hidden = true; $('#planner').hidden = false; $('#settings').hidden = false; $('#restart').hidden = false; render(); walkthrough.show(); }
 $('#settings').onclick = () => showSetup('edit');
 $('#cancel-settings').onclick = showPlanner;
 $('#restart').onclick = () => { hideContext(); $('#restart-dialog').showModal(); $('#keep-plan').focus(); };
