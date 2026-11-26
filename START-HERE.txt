@@ -1,0 +1,19 @@
+DAYS OFF — INSTALL OR UPDATE
+
+Double-click: Install or Update Days Off.command
+
+Already installed? Run the same file. It updates the app, restarts its local
+server, and keeps your existing browser-saved plan. No uninstall is needed.
+
+After this update, return to your existing calendar tab and press Command-R
+if it still shows the old version. Look for v1.1.0 at the bottom.
+Future updates can refresh an idle calendar automatically; an unsaved editor
+will ask you to finish before reloading.
+
+Keep using the same browser and profile at http://localhost:4173.
+Use Export/Import if you intentionally switch profiles, browsers, or computers.
+
+If Apple blocks the installer: try opening it, then go to System Settings >
+Privacy & Security > Open Anyway for this file and approve the prompt.
+
+See MAC-INSTALL.md for installation, updating, and uninstalling details.

@@ -5,11 +5,12 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.PORT || 4173);
+const release = JSON.parse(await readFile(path.join(root,'package.json'),'utf8')).version;
 const allowed = new Set(['index.html', 'app.js', 'model.js', 'styles.css', 'tour.js']);
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css' };
 const server = http.createServer(async (req, res) => {
   const name = new URL(req.url, 'http://localhost').pathname.slice(1) || 'index.html';
-  if (name === 'health') { res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify({ app: 'days-off', version: 1 })); return; }
+  if (name === 'health') { res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify({ app: 'days-off', version: 1, release })); return; }
   if (!allowed.has(name)) { res.writeHead(404); res.end('Not found'); return; }
   try {
     const data = await readFile(path.join(root, name));

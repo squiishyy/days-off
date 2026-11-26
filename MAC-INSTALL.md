@@ -3,7 +3,7 @@
 ## For the person receiving the app
 
 1. Unzip **Days-Off-Mac.zip**.
-2. Double-click **Install Days Off.command** inside the Days Off folder.
+2. Double-click **Install or Update Days Off.command** inside the Days Off folder.
 3. When it finishes, **Days Off** is in your personal Applications folder (`~/Applications`). Open it whenever you want the calendar. The installer opens it once for you.
 4. Enter your balance and accrual dates. A short illustrated guide then shows how to use the calendar. Skip it anytime, or replay it with **How to use**.
 
@@ -17,13 +17,19 @@ A user LaunchAgent starts the local server automatically after you log in. No Te
 
 The address is always **http://localhost:4173**. The launcher prefers Google Chrome when installed and otherwise uses your default browser. Keep using the same browser **and profile** to see the same plan.
 
-PTO settings, planned days, and company holidays are saved in that browser's localStorage. They survive closing the tab, quitting the browser, restarting the local server, and restarting the Mac. Installing updates or reinstalling does not clear them.
+PTO settings, labeled/color-coded time off, other events, and company holidays are saved in that browser's localStorage. They survive closing the tab, quitting the browser, restarting the local server, and restarting the Mac. Installing updates or reinstalling does not clear them.
 
-Clearing browser site data or using an incognito/private session is different: those can remove saved data. Export a backup from the planner if you want a portable copy, before clearing browser data, or before changing computers or browser profiles. Import restores that copy. Nothing is synced to GitHub.
+Clearing browser site data or using an incognito/private session is different: those can remove saved data. Export a backup from the planner if you want a portable copy, before clearing browser data, or before changing computers or browser profiles. Import restores that copy. Nothing is synced to GitHub. Old saved plans and JSON backups remain compatible with version 1.1; labels, colors, and other events are optional additions to the existing storage format.
 
 ## Updates
 
-Run **Install Days Off.command** from a newer copy of the folder. It updates the local app and restarts its login service, keeping browser storage at the same address. The installer does not silently update itself.
+Send the newer **Days-Off-Mac.zip**, unzip it, and double-click **Install or Update Days Off.command**. Use that same file for both installation and updates. No uninstall, GitHub account, Terminal commands, or data migration is needed.
+
+The updater checks the new code, keeps a previous-code copy for rollback, replaces the installed app, and restarts its login service at **the same localhost address and port**. It never clears browser storage. Updates do not open a different browser or profile.
+
+For this first update from the original version, return to the existing calendar tab and press **Command-R** once if needed. Confirm **v1.1.0** at the bottom. Version 1.1 and later can detect later updates and refresh an idle calendar in the same tab; an unsaved editor is protected until you finish editing or choose Reload app.
+
+macOS may ask you to approve a newly downloaded installer through Privacy & Security > Open Anyway. This app remains unsigned; the updater does not disable Apple security protections. The installer does not silently download future app updates.
 
 ## If installation says the port is already in use
 
@@ -50,7 +56,7 @@ The shell installer pins Node.js 24.22.3 and checks the downloaded archive again
 Developers can prepare a sandbox installation without enabling a login item or opening a browser:
 
 ```sh
-./'Install Days Off.command' --prepare-only --test-root /absolute/path/to/test-folder
+./'Install or Update Days Off.command' --prepare-only --test-root /absolute/path/to/test-folder
 ```
 
 This writes all installation outputs beneath the test folder and validates the generated property lists. It still downloads the official runtime if it is not cached in that test folder. A temporary LaunchAgent was also tested: it started the installed server and restarted it after termination, and was then removed. Saved PTO and holidays were verified after a server restart and tab close/reopen. A full Mac reboot was not performed; login behavior should be checked on the recipient Mac.

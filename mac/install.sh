@@ -30,7 +30,11 @@ case "$arch" in
 esac
 node_version=v24.22.3
 node_dir="$install_root/runtime/$node_version-$node_arch"
-print 'Installing Days off for this Mac user (no administrator password needed).'
+if [[ -f "$install_root/app/index.html" ]]; then
+  print 'Updating Days off. Your browser-saved plan stays in place.'
+else
+  print 'Installing Days off for this Mac user (no administrator password needed).'
+fi
 mkdir -p "$install_root/runtime"
 if [[ ! -x "$node_dir/bin/node" ]]; then
   stage_dir=$(mktemp -d "$install_root/runtime/.download.XXXXXX")
